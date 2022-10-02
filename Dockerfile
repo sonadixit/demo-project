@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
-EXPOSE 8080
-ARG JAR_FILE=target/*.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM nginx
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY conf /etc/nginx
+VOLUME /var/log/nginx/log
